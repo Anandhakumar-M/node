@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -11,30 +10,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  password: {
-    type: String,
-    required: true
-  },
-  verificationToken: {
-    type: String
-  },
-  passwordResetToken: {
-    type: String
-  },
+  verificationToken: String,
   isEmailConfirmed: {
     type: Boolean,
     default: false
   },
-  emailConfirmedAt: {
-    type: Date
+  emailConfirmedAt: Date,
+  password: {
+    type: String,
+    required: true
   },
-  roles: {
-    type: [String],
-    enum: ['user', 'admin'],
-    default: ['user']
-  }
+  passwordResetToken: String
 });
-
 
 const User = mongoose.model('User', userSchema);
 
